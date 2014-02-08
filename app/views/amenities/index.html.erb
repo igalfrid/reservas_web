@@ -1,0 +1,22 @@
+<h1>Amenities</h1>
+
+<%= link_to 'Nuevo amenity', new_amenity_path %>
+<table>
+  <tr>
+    <th>Nombre</th>
+    <th>Capacidad</th>
+    <th>Descripción</th>
+  </tr>
+
+  <% @amenities.each do |amenity| %>
+      <tr>
+        <td><%= amenity.name %></td>
+        <td><%= amenity.capacity %></td>
+        <td><%= truncate(amenity.description, :lenght => 20) %></td>
+        <td><%= link_to 'Ver', amenity %></td>
+        <td><%= link_to 'Editar', edit_amenity_path(amenity) %></td>
+        <td><%= link_to 'Eliminar', amenity_path(amenity),
+                        method: :delete, data: { confirm: '¿Está seguro?' } %></td>
+      </tr>
+  <% end %>
+</table>
